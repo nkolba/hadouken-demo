@@ -18,6 +18,7 @@
       <p id="version-number-container">
             Current version: <span id="of-version"></span>
         </p>
+        <input id="token" value="IEX Token">
         <button id="start">Start Demo</button>
     </div>
     
@@ -25,10 +26,11 @@
     <script>
         
         function runDemo(){
+            let token = document.getElementById("token").value;
             //create demo applications
-            fin.desktop.Application.createFromManifest('http://localhost:5555/demo-1.json', function(app) {
+            fin.desktop.Application.createFromManifest(`http://localhost:5555/demo-1.json?$$token=${token}`, function(app) {
                 app.run();
-                fin.desktop.Application.createFromManifest('http://localhost:5555/demo-2.json', function(app) {
+                fin.desktop.Application.createFromManifest(`http://localhost:5555/demo-2.json?$$token=${token}`, function(app) {
                     app.run();
                 }, function(error) {
                 console.error('Failed to create app from manifest: ', error);
