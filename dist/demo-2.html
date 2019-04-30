@@ -20,10 +20,8 @@
 </head>
 
 <body>
-    <div id="context"></div>
-    <div>channel <select id="channels">
-            <option value="">none</option>
-        </select></div>
+    <div class="bar">channel <select id="channels"><option value="">none</option></select>
+            <input id="broadcast"><button id="send">GO</button> </div>
     <div id="chart"></div>
     <script src="main.js"></script>
     <script src="svg.js"></script>
@@ -125,8 +123,8 @@
             if(ticker === "" || ticker === undefined) {
             } else {
 
-                let context = document.getElementById("context");
-                context.innerHTML = `<p>${ticker.toUpperCase()}</p>`;
+                let context = document.getElementById("broadcast");
+                context.value = ticker.toUpperCase();
 
                 //fetch the token from the parent frame - won't work cross-origin
                 let pURL = new URL(window.parent.location.href);

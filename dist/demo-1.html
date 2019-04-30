@@ -96,7 +96,7 @@
                  fdc3.addContextListener(function(ctx){
                     
                     let ticker = ctx.id.ticker;
-                    document.getElementById("broadcast").value = ticker;
+                    document.getElementById("broadcast").value = ticker.toUpperCase();
                     //fetch the token from the parent frame - won't work cross-origin
                     let pURL = new URL(window.parent.location.href);
                     let token = pURL.searchParams.get("token");
