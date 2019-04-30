@@ -1,0 +1,26 @@
+{
+    "startup_app": {
+        "name": "HadoukenDemo2",
+        "url":"http://localhost:5555/frame-test.html",
+        "realurl": "http://localhost:5555/demo-2.html",
+        "uuid": "HadoukenDemo2",
+        "applicationIcon": "http://localhost:5555/favicon.ico",
+        "autoShow": true,
+        "frame":false,
+        "saveWindowState": true 
+    },
+    "services":[
+        {"name":"layouts"},
+        {"name":"fdc3"}
+    ],
+    "runtime": {
+        "arguments": "",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Openfin POC",
+        "icon": "http://localhost:5555/favicon.ico",
+        "name": "Openfin POC"
+    }
+}

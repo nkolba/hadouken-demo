@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>OpenFin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+
+<body>
+    <template id="color-select-template">
+            <div>channel <select id="channels"><option value="">none</option></select></div>
+    </template>
+    <div>
+      <p id="version-number-container">
+            Current version: <span id="of-version"></span>
+        </p>
+        <button id="start">Start Demo</button>
+    </div>
+    
+    <script src="main.js"></script>
+    <script>
+        
+        function runDemo(){
+            //create demo applications
+            fin.desktop.Application.createFromManifest('http://localhost:5555/demo-1.json', function(app) {
+                app.run();
+                fin.desktop.Application.createFromManifest('http://localhost:5555/demo-2.json', function(app) {
+                    app.run();
+                }, function(error) {
+                console.error('Failed to create app from manifest: ', error);
+                });
+                }, function(error) {
+                console.error('Failed to create app from manifest: ', error);
+            });
+        }
+            
+            
+  /*          var app = new fin.desktop.Application({
+                url: "http://localhost:5555/demo-1.html",
+                uuid: "demo-1",
+                name: "FDC3 Demo",
+                mainWindowOptions: {
+                    defaultHeight: 600,
+                    defaultWidth: 800,
+                    defaultTop: 300,
+                    defaultLeft: 300,
+                    autoShow: true
+                }
+            }, function () {
+                console.log("Application successfully created");
+                app.run();
+            }, function (error) {
+                console.log("Error creating application:", error);
+            });
+
+            var app2 = new fin.desktop.Application({
+                url: "http://localhost:5555/frame-test.html",
+                uuid: "demo-2",
+                name: "FDC3 Demo 2",
+                mainWindowOptions: {
+                    defaultHeight: 600,
+                    defaultWidth: 800,
+                    defaultTop: 300,
+                    defaultLeft: 300,
+                    autoShow: true
+                }
+            }, function () {
+                console.log("Application successfully created");
+                app2.run();
+            }, function (error) {
+                console.log("Error creating application:", error);
+            });
+        }
+        
+ */  
+        document.getElementById("start").addEventListener("click",runDemo);
+            </script>
+</body>
+
+</html>

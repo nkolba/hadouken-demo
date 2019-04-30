@@ -1,0 +1,15 @@
+{
+  "name": "hadouken-demo",
+  "version": "0.0.0",
+  "devDependencies": {
+    "@types/openfin": "latest",
+    "hadouken-js-adapter": "latest",
+    "live-server": "latest",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "openfin-fdc3": "^0.1.0"
+  }
+}

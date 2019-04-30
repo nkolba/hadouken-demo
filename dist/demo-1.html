@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>OpenFin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div>
+        <h1>Hello, world!</h1>
+        <p>This is a template for an OpenFin application.</p>
+        <p id="version-number-container">
+            Current version: <span id="of-version"></span>
+        </p>
+    </div>
+    <div>current context:<span id="context"></span></div>
+    <div>channel <select id="channels"><option value="">none</option></select></div>
+    <div><input id="broadcast"><button id="send">broadcast</button> </div>
+    <script src="main.js"></script>
+    <script>
+        
+        
+        
+                //get channels
+                async function setChannels(){
+                let channels = await fdc3.getAllChannels();
+                let cEl = document.getElementById("channels");
+               
+                function updateChannel(evt){
+                    fdc3.joinChannel(evt.target.value);
+                    //hack to change titlebar color
+                    window.parent.document.getElementById("channel-indicator").style.backgroundColor = evt.target.value;
+                
+                }
+        
+                cEl.addEventListener("change",updateChannel);
+        
+                channels.forEach(channel => {
+                    cEl[cEl.options.length] = new Option(channel.name, channel.id);
+                });}
+        
+                document.getElementById("send").addEventListener("click",function(){
+                    let val = document.getElementById("broadcast").value;
+                    let ctx = {
+                            type: 'fdc3.instrument',
+                             name: '',
+                            id: {
+                                ticker: '',
+                                default:''
+                            }
+                        };
+                    ctx.name = val;
+                    ctx.id.ticker = val;
+                    ctx.id.default = val;
+                    fdc3.broadcast(ctx);
+                })
+               
+        
+                setChannels();
+        
+                //add a context listener
+                 fdc3.addContextListener(function(ctx){
+                    
+                    document.getElementById("context").innerText = ctx.id.ticker;
+                });
+            </script>
+</body>
+
+</html>
