@@ -10,6 +10,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "openfin-fdc3": "^0.1.0"
+    "openfin-fdc3": "^0.1.0",
+    "svg.js": "^2.7.1"
   }
 }

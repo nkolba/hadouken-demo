@@ -1,4 +1,5 @@
 import * as fdc3 from "openfin-fdc3"
+import "svg.js"
 
 window.fdc3 = fdc3;
 // uncomment line below to register offline cache service worker 
@@ -21,7 +22,8 @@ async function init() {
     const win = await fin.Window.getCurrent();
 
     const ofVersion = document.querySelector('#of-version');
-    ofVersion.innerText = await fin.System.getVersion();
+    if(ofVersion !== null)
+        ofVersion.innerText = await fin.System.getVersion();
 
     //Only launch new windows from the main window.
     if (win.identity.name === app.identity.uuid) {
